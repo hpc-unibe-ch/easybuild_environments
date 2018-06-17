@@ -1,0 +1,42 @@
+help([==[
+
+Description
+===========
+C, C++ and Fortran compilers from The Portland Group - PGI
+
+
+More information
+================
+ - Homepage: http://www.pgroup.com/
+]==])
+
+whatis([==[Description: C, C++ and Fortran compilers from The Portland Group - PGI]==])
+whatis([==[Homepage: http://www.pgroup.com/]==])
+
+local root = "/software.el7/software/PGI/18.4-GCC-6.4.0-2.28"
+
+conflict("PGI")
+
+if not isloaded("GCCcore/.6.4.0") then
+    load("GCCcore/.6.4.0")
+end
+
+if not isloaded("binutils/.2.28-GCCcore-6.4.0") then
+    load("binutils/.2.28-GCCcore-6.4.0")
+end
+
+if not isloaded("numactl/2.0.11-GCCcore-6.4.0") then
+    load("numactl/2.0.11-GCCcore-6.4.0")
+end
+
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "linux86-64/18.4/lib"))
+prepend_path("LIBRARY_PATH", pathJoin(root, "linux86-64/18.4/lib"))
+prepend_path("MANPATH", pathJoin(root, "linux86-64/18.4/man"))
+prepend_path("PATH", pathJoin(root, "linux86-64/18.4/bin"))
+setenv("EBROOTPGI", root)
+setenv("EBVERSIONPGI", "18.4")
+setenv("EBDEVELPGI", pathJoin(root, "easybuild/PGI-18.4-GCC-6.4.0-2.28-easybuild-devel"))
+
+prepend_path("PATH", root)
+setenv("PGI", "/software.el7/software/PGI/18.4-GCC-6.4.0-2.28")
+-- Built with EasyBuild version 3.6.1
