@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/pkg-config/.0.29.2-GCCcore-6.4.0.lua

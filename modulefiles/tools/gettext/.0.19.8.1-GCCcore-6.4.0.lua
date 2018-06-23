@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/gettext/.0.19.8.1-GCCcore-6.4.0.lua
