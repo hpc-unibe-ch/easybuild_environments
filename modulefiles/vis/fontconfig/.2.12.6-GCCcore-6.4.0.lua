@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/fontconfig/.2.12.6-GCCcore-6.4.0.lua
