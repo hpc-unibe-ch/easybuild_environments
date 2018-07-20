@@ -21,11 +21,5 @@ conflict("IDL")
 
 setenv("EXELIS_DIR", base)
 setenv("IDL_DIR", idl_dir)
-set_alias("harrislicense", pathJoin(idl_dir, "bin/harrislicense"))
-set_alias("idl", pathJoin(idl_dir, "bin/idl"))
-set_alias("idlde", pathJoin(idl_dir, "bin/idlde"))
-set_alias("idlhelp", pathJoin(idl_dir, "bin/idlhelp"))
-set_alias("idlrpc", pathJoin(idl_dir, "bin/idlrpc"))
-set_alias("idltaskengine", pathJoin(idl_dir, "bin/idltaskengine"))
-
-
+setenv("LM_LICENSE_FILE", "/software.el7/software/IDL/license/license.dat")
+prepend_path("PATH", pathJoin(idl_dir, "bin"))
