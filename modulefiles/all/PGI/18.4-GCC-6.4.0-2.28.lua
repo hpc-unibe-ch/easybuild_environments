@@ -38,5 +38,6 @@ setenv("EBVERSIONPGI", "18.4")
 setenv("EBDEVELPGI", pathJoin(root, "easybuild/PGI-18.4-GCC-6.4.0-2.28-easybuild-devel"))
 
 prepend_path("PATH", root)
+prepend_path("PGROUPD_LICENSE_FILE", "7496@lizenzserver-pgi.ubelix.unibe.ch")
 setenv("PGI", "/software.el7/software/PGI/18.4-GCC-6.4.0-2.28")
 -- Built with EasyBuild version 3.6.1
