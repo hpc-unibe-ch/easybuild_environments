@@ -32,4 +32,5 @@ setenv("EBDEVELIMPI", pathJoin(root, "easybuild/impi-2018.3.222-iccifort-2018.3.
 
 prepend_path("NLSPATH", pathJoin(root, "idb/intel64/locale/%l_%t/%N"))
 setenv("I_MPI_ROOT", "/software.el7/software/impi/2018.3.222-iccifort-2018.3.222-GCC-7.3.0-2.30")
+setenv("I_MPI_HYDRA_BOOTSTRAP", "slurm")
 -- Built with EasyBuild version 3.6.2
