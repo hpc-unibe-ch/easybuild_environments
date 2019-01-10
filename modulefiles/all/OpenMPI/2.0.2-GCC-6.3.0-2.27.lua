@@ -35,4 +35,4 @@ setenv("EBROOTOPENMPI", root)
 setenv("EBVERSIONOPENMPI", "2.0.2")
 setenv("EBDEVELOPENMPI", pathJoin(root, "easybuild/OpenMPI-2.0.2-GCC-6.3.0-2.27-easybuild-devel"))
 
--- Built with EasyBuild version 3.6.1
+-- Built with EasyBuild version 3.7.1
