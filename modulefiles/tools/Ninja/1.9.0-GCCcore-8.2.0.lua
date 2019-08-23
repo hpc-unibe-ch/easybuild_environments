@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/Ninja/1.9.0-GCCcore-8.2.0.lua

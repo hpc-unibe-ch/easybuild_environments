@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/SQLite/3.27.2-GCCcore-8.2.0.lua
