@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/freetype/.2.9.1-GCCcore-8.2.0.lua

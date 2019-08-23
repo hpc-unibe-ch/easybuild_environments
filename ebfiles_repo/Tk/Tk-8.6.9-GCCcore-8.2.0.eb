@@ -1,0 +1,67 @@
+# Built with EasyBuild version 3.9.3 on 2019-08-22_13-48-10
+easyblock = 'ConfigureMake'
+
+name = 'Tk'
+version = '8.6.9'
+
+homepage = 'http://www.tcl.tk/'
+description = """Tk is an open source, cross-platform widget toolchain that provides a library of basic elements for
+ building a graphical user interface (GUI) in many different programming languages."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.2.0'}
+
+source_urls = ["http://prdownloads.sourceforge.net/tcl"]
+sources = ['%(namelower)s%(version)s-src.tar.gz']
+patches = ['Tk-8.6.4_different-prefix-with-tcl.patch']
+checksums = [
+    'd3f9161e8ba0f107fe8d4df1f6d3a14c30cc3512dfc12a795daa367a27660dac',  # tk8.6.9-src.tar.gz
+    '7a6daa8349393af3d340e774aebf07c7410c51e01bc654ceb3679877063b961d',  # Tk-8.6.4_different-prefix-with-tcl.patch
+]
+
+builddependencies = [('binutils', '2.31.1')]
+dependencies = [
+    ('Tcl', version),
+    ('X11', '20190311'),
+    ('zlib', '1.2.11'),
+]
+
+configopts = '--enable-threads --with-tcl=$EBROOTTCL/lib CFLAGS="-I$EBROOTTCL/include"'
+
+installopts = "&& make install-private-headers"
+
+postinstallcmds = ["ln -s wish%(version_major_minor)s %(installdir)s/bin/wish"]
+
+sanity_check_paths = {
+    'files': ["bin/wish", "lib/tkConfig.sh", "include/tkInt.h"],
+    'dirs': [],
+}
+
+start_dir = 'unix'
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "build_time": 18.05,
+    "command_line": ["--buildpath='/dev/shm'", "--containerpath='/software.el7/containers'", "--hide-deps='ANTLR,APR,APR-util,AT-SPI2-ATK,AT-SPI2-core,ATK,Autoconf,Automake,Bison,CUSP,Coreutils,DB,DBus,DocBook-XML,Dyninst,ETSF_IO,FFmpeg,flex,FLTK,FTGL,GCCcore,GDAL,GL2PS,GLEW,GLib,GLPK,GPC,GObject-Introspection,GTI,GTK+,GTS,Gdk-Pixbuf,Ghostscript,GraphicsMagick,GtkSourceView,HarfBuzz,icc,ifort,JUnit,JasPer,LibTIFF,LibUUID,Libint,M4,Mesa,NASM,OPARI2,OTF2,PCRE,PDT,PROJ,Pango,PnMPI,PyCairo,PyGObject,Qhull,S-Lang,SIP,SWIG,Serf,Szip,Tcl,Tk,UDUNITS,XML-Parser,XZ,XKeyboardConfig,YAXT,Yasm,adwaita-icon-theme,ant,assimp,binutils,byacc,bzip2,cairo,dbus-glib,damageproto,eudev,expat,g2clib,g2lib,gc,glproto,gperf,guile,grib_api,gsettings-desktop-schemas,fixesproto,fontsproto,fontconfig,freeglut,freetype,gettext,inputproto,intltool,itstool,jhbuild,kbproto,libGLU,libICE,libSM,libXau,libXaw,libXcursor,libXdamage,libXdmcp,libXext,libXfixes,libXfont,libXft,libXi,libXinerama,libXmu,libXpm,libXrandr,libcerf,libcroco,libctl,libdap,libdrm,libdwarf,libelf,libevent,libffi,libfontenc,libgd,libgeotiff,libglade,libidn,libjpeg-turbo,libmatheval,libpng,libpciaccess,libpthread-stubs,libreadline,librsvg,libtool,libunistring,libunwind,libyaml,libxcb,libxkbcommon,libxml2,libxslt,makedepend,motif,ncurses,pixman,pkg-config,pkgconfig,popt,pscom,qrupdate,randrproto,recordproto,renderproto,scrollkeeper,texinfo,util-linux,wxPropertyGrid,wxWidgets,x264,xbitmaps,xcb-proto,xcb-util,xcb-util-image,xcb-util-keysyms,xcb-util-renderutil,xcb-util-wm,xextproto,xineramaproto,xorg-macros,xprop,xproto,xtrans,zlib'", "--installpath='/software.el7'", "--packagepath='/software.el7/packages'", "--prefix='/software.el7'", "--repositorypath='/software.el7/ebfiles_repo'", "--robot='/software.el7/easyconfigs:/software.el7/ebfiles_repo:/software.el7/software/EasyBuild/3.9.3/lib/python2.7/site-packages/easybuild_easyconfigs-3.9.3-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/software.el7/easyconfigs:/software.el7/ebfiles_repo:'", "--sourcepath='/software.el7/sources'", "--subdir-modules='modulefiles'", 'R-3.6.0-foss-2019a.eb'],
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz",
+    "cpu_speed": 3100.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.9.3",
+    "easybuild-framework_version": "3.9.3",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/storage/software/ivybridge.el7/software/GCCcore/8.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/8.2.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/software.el7/software/GCCcore/8.2.0 --with-local-prefix=/software.el7/software/GCCcore/8.2.0 --enable-bootstrap --with-isl=/dev/shm/GCCcore/8.2.0/dummy-/gcc-8.2.0/stage2_stuff; Thread model: posix; gcc version 8.2.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "submit02.ubelix.unibe.ch",
+    "install_size": 9130861,
+    "modules_tool": ('Lmod', '/software.el7/lmod/lmod/libexec/lmod', '7.7.14'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.6.1810",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Jun 20 2019, 20:27:34) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]",
+    "system_gcc_path": "/software.el7/software/GCCcore/8.2.0/bin/gcc",
+    "system_python_path": "/bin/python",
+    "timestamp": 1566474490,
+    "total_memory": 64237,
+}]

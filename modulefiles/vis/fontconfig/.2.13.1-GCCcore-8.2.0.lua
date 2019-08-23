@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/fontconfig/.2.13.1-GCCcore-8.2.0.lua
