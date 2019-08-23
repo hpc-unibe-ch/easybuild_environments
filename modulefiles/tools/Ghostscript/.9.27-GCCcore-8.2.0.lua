@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/Ghostscript/.9.27-GCCcore-8.2.0.lua

@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/ImageMagick/7.0.8-46-GCCcore-8.2.0.lua
