@@ -12,6 +12,7 @@ More information
 
 whatis([==[Description: C, C++ and Fortran compilers from The Portland Group - PGI]==])
 whatis([==[Homepage: http://www.pgroup.com/]==])
+whatis([==[URL: http://www.pgroup.com/]==])
 
 local root = "/software.el7/software/PGI/19.4-GCC-8.2.0-2.31.1"
 
@@ -40,4 +41,4 @@ setenv("EBDEVELPGI", pathJoin(root, "easybuild/PGI-19.4-GCC-8.2.0-2.31.1-easybui
 prepend_path("PATH", root)
 prepend_path("PGROUPD_LICENSE_FILE", "7496@lizenzserver-pgi.ubelix.unibe.ch")
 setenv("PGI", "/software.el7/software/PGI/19.4-GCC-8.2.0-2.31.1")
--- Built with EasyBuild version 3.9.1
+-- Built with EasyBuild version 3.9.3
