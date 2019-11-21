@@ -1,0 +1,54 @@
+# Built with EasyBuild version 4.0.1 on 2019-11-21_18-10-31
+name = 'OpenMPI'
+version = '3.1.4'
+
+homepage = 'https://www.open-mpi.org/'
+description = """The Open MPI Project is an open source MPI-3 implementation."""
+
+toolchain = {'name': 'GCC', 'version': '8.3.0'}
+
+source_urls = ['https://www.open-mpi.org/software/ompi/v%(version_major_minor)s/downloads']
+sources = [SOURCELOWER_TAR_GZ]
+patches = ['%(name)s-3.1.3-add_ompi_datatype_attribute_to_release_ucp_datatype.patch']
+checksums = [
+    'a7c34ad052ea8201ed9e7389994069fe6996403beabdd2d711caf0532808156c',  # openmpi-3.1.4.tar.gz
+    # OpenMPI-3.1.3-add_ompi_datatype_attribute_to_release_ucp_datatype.patch
+    '46fa94eb417954bdb297291bad4f4d32018af4911bebf3e59af6276eba6a50a9',
+]
+
+dependencies = [
+    ('zlib', '1.2.11'),
+    ('hwloc', '1.11.12')
+]
+
+# to enable SLURM integration (site-specific)
+# configopts = '--with-slurm --with-pmi=/usr/include/slurm --with-pmi-libdir=/usr'
+configopts = '--with-slurm --with-pmi'
+
+moduleclass = 'mpi'
+
+# Build statistics
+buildstats = [{
+    "build_time": 433.98,
+    "command_line": ["--buildpath='/dev/shm'", "--containerpath='/software.el7/containers'", "--hide-deps='ANTLR,APR,APR-util,AT-SPI2-ATK,AT-SPI2-core,ATK,Autoconf,Automake,Bison,CUSP,Coreutils,DB,DBus,DocBook-XML,Dyninst,ETSF_IO,FFmpeg,flex,FLTK,FTGL,GCCcore,GDAL,GL2PS,GLEW,GLib,GLPK,GPC,GObject-Introspection,GTI,GTK+,GTS,Gdk-Pixbuf,Ghostscript,GraphicsMagick,GtkSourceView,HarfBuzz,icc,ifort,JUnit,JasPer,LibTIFF,LibUUID,Libint,M4,Mesa,NASM,OPARI2,OTF2,PCRE,PDT,PROJ,Pango,PnMPI,PyCairo,PyGObject,Qhull,S-Lang,SIP,SWIG,Serf,Szip,Tcl,Tk,UDUNITS,XML-Parser,XZ,XKeyboardConfig,YAXT,Yasm,adwaita-icon-theme,ant,assimp,binutils,byacc,bzip2,cairo,dbus-glib,damageproto,eudev,expat,g2clib,g2lib,gc,glproto,gperf,guile,grib_api,gsettings-desktop-schemas,fixesproto,fontsproto,fontconfig,freeglut,freetype,gettext,inputproto,intltool,itstool,jhbuild,kbproto,libGLU,libICE,libSM,libXau,libXaw,libXcursor,libXdamage,libXdmcp,libXext,libXfixes,libXfont,libXft,libXi,libXinerama,libXmu,libXpm,libXrandr,libcerf,libcroco,libctl,libdap,libdrm,libdwarf,libelf,libevent,libffi,libfontenc,libgd,libgeotiff,libglade,libidn,libjpeg-turbo,libmatheval,libpng,libpciaccess,libpthread-stubs,libreadline,librsvg,libtool,libunistring,libunwind,libyaml,libxcb,libxkbcommon,libxml2,libxslt,makedepend,motif,ncurses,pixman,pkg-config,pkgconfig,popt,pscom,qrupdate,randrproto,recordproto,renderproto,scrollkeeper,texinfo,util-linux,wxPropertyGrid,wxWidgets,x264,xbitmaps,xcb-proto,xcb-util,xcb-util-image,xcb-util-keysyms,xcb-util-renderutil,xcb-util-wm,xextproto,xineramaproto,xorg-macros,xprop,xproto,xtrans,zlib'", "--installpath='/software.el7'", "--packagepath='/software.el7/packages'", "--prefix='/software.el7'", "--repositorypath='/software.el7/ebfiles_repo'", "--robot='/software.el7/easyconfigs:/software.el7/ebfiles_repo:/software.el7/software/EasyBuild/4.0.1/easybuild/easyconfigs'", "--robot-paths='/software.el7/easyconfigs:/software.el7/ebfiles_repo:'", "--sourcepath='/software.el7/sources'", "--subdir-modules='modulefiles'", 'foss-2019b.eb'],
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+    "cpu_speed": 3100.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "4.0.1",
+    "easybuild-framework_version": "4.0.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/storage/software/broadwell.el7/software/GCCcore/8.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/8.3.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/software.el7/software/GCCcore/8.3.0 --with-local-prefix=/software.el7/software/GCCcore/8.3.0 --enable-bootstrap --with-isl=/dev/shm/GCCcore/8.3.0/system-system/gcc-8.3.0/stage2_stuff; Thread model: posix; gcc version 8.3.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "anode001",
+    "install_size": 25965116,
+    "modules_tool": ('Lmod', '/software.el7/lmod/lmod/libexec/lmod', '7.7.14'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.7.1908",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  7 2019, 00:51:29) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]",
+    "system_gcc_path": "/software.el7/software/GCCcore/8.3.0/bin/gcc",
+    "system_python_path": "/bin/python",
+    "timestamp": 1574356231,
+    "total_memory": 128677,
+}]
