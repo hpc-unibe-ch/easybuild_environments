@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/SQLite/3.13.0-foss-2016b.lua
