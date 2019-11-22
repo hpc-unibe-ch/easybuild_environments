@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/numactl/2.0.12-GCCcore-8.3.0.lua
