@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/snappy/1.1.7-GCCcore-8.2.0.lua
