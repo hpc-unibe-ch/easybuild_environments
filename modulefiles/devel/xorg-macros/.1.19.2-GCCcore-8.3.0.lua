@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/xorg-macros/.1.19.2-GCCcore-8.3.0.lua
