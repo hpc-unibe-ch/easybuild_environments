@@ -1,0 +1,70 @@
+# Built with EasyBuild version 4.0.1 on 2019-11-22_08-31-33
+easyblock = 'MakeCp'
+
+name = 'NSS'
+version = '3.42.1'
+
+homepage = 'https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS'
+description = """Network Security Services (NSS) is a set of libraries designed to support cross-platform development
+ of security-enabled client and server applications."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.2.0'}
+
+source_urls = ['https://ftp.mozilla.org/pub/security/nss/releases/NSS_%(version_major)s_%(version_minor)s_1_RTM/src/']
+sources = [SOURCELOWER_TAR_GZ]
+patches = ['NSS-3.39_pkgconfig.patch']
+checksums = [
+    '087db37d38fd49dfd584dd2a8b5baa7fc88de7c9bd97c0c2d5be4abcafc61fc6',  # nss-3.42.1.tar.gz
+    '5c4b55842e5afd1e8e67b90635f6474510b89242963c4ac2622d3e3da9062774',  # NSS-3.39_pkgconfig.patch
+]
+
+builddependencies = [('binutils', '2.31.1')]
+dependencies = [
+    ('NSPR', '4.21'),
+    ('zlib', '1.2.11'),
+]
+
+# building in parallel fails
+parallel = 1
+
+# fix for not being able to find header files
+buildopts = 'BUILD_OPT=1 USE_64=1 CPATH="$EBROOTNSPR/include/nspr:$CPATH" && '
+# also install pkgconfig file (see patch)
+buildopts += "cd config && make PREFIX=%(installdir)s BUILD_OPT=1 USE_64=1 && cd -"
+
+files_to_copy = ['../dist/Linux*.OBJ/*', (['../dist/public/*'], 'include')]
+
+sanity_check_paths = {
+    'files': ['lib/libnss.a'],
+    'dirs': ['bin', 'include/dbm', 'include/nss'],
+}
+
+modextrapaths = {'CPATH': 'include/nss'}
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 378.75,
+    "command_line": ["--buildpath='/dev/shm'", "--containerpath='/software.el7/containers'", "--hide-deps='ANTLR,APR,APR-util,AT-SPI2-ATK,AT-SPI2-core,ATK,Autoconf,Automake,Bison,CUSP,Coreutils,DB,DBus,DocBook-XML,Dyninst,ETSF_IO,FFmpeg,flex,FLTK,FTGL,GCCcore,GDAL,GL2PS,GLEW,GLib,GLPK,GPC,GObject-Introspection,GTI,GTK+,GTS,Gdk-Pixbuf,Ghostscript,GraphicsMagick,GtkSourceView,HarfBuzz,icc,ifort,JUnit,JasPer,LibTIFF,LibUUID,Libint,M4,Mesa,NASM,OPARI2,OTF2,PCRE,PDT,PROJ,Pango,PnMPI,PyCairo,PyGObject,Qhull,S-Lang,SIP,SWIG,Serf,Szip,Tcl,Tk,UDUNITS,XML-Parser,XZ,XKeyboardConfig,YAXT,Yasm,adwaita-icon-theme,ant,assimp,binutils,byacc,bzip2,cairo,dbus-glib,damageproto,eudev,expat,g2clib,g2lib,gc,glproto,gperf,guile,grib_api,gsettings-desktop-schemas,fixesproto,fontsproto,fontconfig,freeglut,freetype,gettext,inputproto,intltool,itstool,jhbuild,kbproto,libGLU,libICE,libSM,libXau,libXaw,libXcursor,libXdamage,libXdmcp,libXext,libXfixes,libXfont,libXft,libXi,libXinerama,libXmu,libXpm,libXrandr,libcerf,libcroco,libctl,libdap,libdrm,libdwarf,libelf,libevent,libffi,libfontenc,libgd,libgeotiff,libglade,libidn,libjpeg-turbo,libmatheval,libpng,libpciaccess,libpthread-stubs,libreadline,librsvg,libtool,libunistring,libunwind,libyaml,libxcb,libxkbcommon,libxml2,libxslt,makedepend,motif,ncurses,pixman,pkg-config,pkgconfig,popt,pscom,qrupdate,randrproto,recordproto,renderproto,scrollkeeper,texinfo,util-linux,wxPropertyGrid,wxWidgets,x264,xbitmaps,xcb-proto,xcb-util,xcb-util-image,xcb-util-keysyms,xcb-util-renderutil,xcb-util-wm,xextproto,xineramaproto,xorg-macros,xprop,xproto,xtrans,zlib'", "--installpath='/software.el7'", "--packagepath='/software.el7/packages'", "--prefix='/software.el7'", "--repositorypath='/software.el7/ebfiles_repo'", "--robot='/software.el7/easyconfigs:/software.el7/ebfiles_repo:/software.el7/software/EasyBuild/4.0.1/easybuild/easyconfigs'", "--robot-paths='/software.el7/easyconfigs:/software.el7/ebfiles_repo:'", "--sourcepath='/software.el7/sources'", "--subdir-modules='modulefiles'", 'Qwt-6.1.4-GCCcore-8.2.0.eb'],
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz",
+    "cpu_speed": 3100.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "4.0.1",
+    "easybuild-framework_version": "4.0.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/storage/software/ivybridge.el7/software/GCCcore/8.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/8.2.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/software.el7/software/GCCcore/8.2.0 --with-local-prefix=/software.el7/software/GCCcore/8.2.0 --enable-bootstrap --with-isl=/dev/shm/GCCcore/8.2.0/dummy-/gcc-8.2.0/stage2_stuff; Thread model: posix; gcc version 8.2.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "submit01.ubelix.unibe.ch",
+    "install_size": 37821198,
+    "modules_tool": ('Lmod', '/software.el7/lmod/lmod/libexec/lmod', '7.7.14'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.7.1908",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  7 2019, 00:51:29) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]",
+    "system_gcc_path": "/software.el7/software/GCCcore/8.2.0/bin/gcc",
+    "system_python_path": "/bin/python",
+    "timestamp": 1574407893,
+    "total_memory": 64236,
+}]

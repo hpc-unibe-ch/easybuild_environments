@@ -1,0 +1,66 @@
+# Built with EasyBuild version 4.0.1 on 2019-11-22_09-53-34
+easyblock = 'ConfigureMake'
+
+name = 'Qwt'
+version = '6.1.4'
+
+homepage = 'http://qwt.sourceforge.net/'
+description = """The Qwt library contains GUI Components and utility classes which are primarily useful for programs
+ with a technical background."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.2.0'}
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = [SOURCELOWER_TAR_BZ2]
+patches = ['Qwt-%(version)s_Fix_prefix_and_pkgconfig.patch']
+checksums = [
+    '1529215329e51fc562e0009505a838f427919a18b362afff441f035b2d9b5bd9',  # qwt-6.1.4.tar.bz2
+    '82788aaa23e4bc764ab1f2769e9260d154976c7d7f043ba4e288330d6984b6a9',  # Qwt-6.1.4_Fix_prefix_and_pkgconfig.patch
+]
+
+builddependencies = [
+    ('binutils', '2.31.1'),
+    ('pkg-config', '0.29.2'),
+]
+
+dependencies = [
+    ('Qt5', '5.12.3'),
+]
+
+skipsteps = ['configure']
+
+prebuildopts = 'export QWT_PREFIX=%(installdir)s && '
+prebuildopts += 'qmake qwt.pro && '
+
+sanity_check_paths = {
+    'files': ['lib/libqwt.%s' % SHLIB_EXT, 'lib/pkgconfig/Qt5Qwt6.pc'],
+    'dirs': ['doc', 'features', 'include', 'plugins'],
+}
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 29.14,
+    "command_line": ["--buildpath='/dev/shm'", "--containerpath='/software.el7/containers'", "--hide-deps='ANTLR,APR,APR-util,AT-SPI2-ATK,AT-SPI2-core,ATK,Autoconf,Automake,Bison,CUSP,Coreutils,DB,DBus,DocBook-XML,Dyninst,ETSF_IO,FFmpeg,flex,FLTK,FTGL,GCCcore,GDAL,GL2PS,GLEW,GLib,GLPK,GPC,GObject-Introspection,GTI,GTK+,GTS,Gdk-Pixbuf,Ghostscript,GraphicsMagick,GtkSourceView,HarfBuzz,icc,ifort,JUnit,JasPer,LibTIFF,LibUUID,Libint,M4,Mesa,NASM,OPARI2,OTF2,PCRE,PDT,PROJ,Pango,PnMPI,PyCairo,PyGObject,Qhull,S-Lang,SIP,SWIG,Serf,Szip,Tcl,Tk,UDUNITS,XML-Parser,XZ,XKeyboardConfig,YAXT,Yasm,adwaita-icon-theme,ant,assimp,binutils,byacc,bzip2,cairo,dbus-glib,damageproto,eudev,expat,g2clib,g2lib,gc,glproto,gperf,guile,grib_api,gsettings-desktop-schemas,fixesproto,fontsproto,fontconfig,freeglut,freetype,gettext,inputproto,intltool,itstool,jhbuild,kbproto,libGLU,libICE,libSM,libXau,libXaw,libXcursor,libXdamage,libXdmcp,libXext,libXfixes,libXfont,libXft,libXi,libXinerama,libXmu,libXpm,libXrandr,libcerf,libcroco,libctl,libdap,libdrm,libdwarf,libelf,libevent,libffi,libfontenc,libgd,libgeotiff,libglade,libidn,libjpeg-turbo,libmatheval,libpng,libpciaccess,libpthread-stubs,libreadline,librsvg,libtool,libunistring,libunwind,libyaml,libxcb,libxkbcommon,libxml2,libxslt,makedepend,motif,ncurses,pixman,pkg-config,pkgconfig,popt,pscom,qrupdate,randrproto,recordproto,renderproto,scrollkeeper,texinfo,util-linux,wxPropertyGrid,wxWidgets,x264,xbitmaps,xcb-proto,xcb-util,xcb-util-image,xcb-util-keysyms,xcb-util-renderutil,xcb-util-wm,xextproto,xineramaproto,xorg-macros,xprop,xproto,xtrans,zlib'", "--installpath='/software.el7'", "--packagepath='/software.el7/packages'", "--prefix='/software.el7'", "--repositorypath='/software.el7/ebfiles_repo'", "--robot='/software.el7/easyconfigs:/software.el7/ebfiles_repo:/software.el7/software/EasyBuild/4.0.1/easybuild/easyconfigs'", "--robot-paths='/software.el7/easyconfigs:/software.el7/ebfiles_repo:'", "--sourcepath='/software.el7/sources'", "--subdir-modules='modulefiles'", 'Qwt-6.1.4-GCCcore-8.2.0.eb'],
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz",
+    "cpu_speed": 3100.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "4.0.1",
+    "easybuild-framework_version": "4.0.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/storage/software/ivybridge.el7/software/GCCcore/8.2.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/8.2.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/software.el7/software/GCCcore/8.2.0 --with-local-prefix=/software.el7/software/GCCcore/8.2.0 --enable-bootstrap --with-isl=/dev/shm/GCCcore/8.2.0/dummy-/gcc-8.2.0/stage2_stuff; Thread model: posix; gcc version 8.2.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "submit01.ubelix.unibe.ch",
+    "install_size": 24340903,
+    "modules_tool": ('Lmod', '/software.el7/lmod/lmod/libexec/lmod', '7.7.14'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.7.1908",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  7 2019, 00:51:29) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]",
+    "system_gcc_path": "/software.el7/software/GCCcore/8.2.0/bin/gcc",
+    "system_python_path": "/bin/python",
+    "timestamp": 1574412814,
+    "total_memory": 64236,
+}]

@@ -1,0 +1,1 @@
+/software.el7/modulefiles/all/Qt5/5.12.3-GCCcore-8.2.0.lua
