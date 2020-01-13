@@ -25,6 +25,6 @@ setenv("EBROOTNAGFOR", root)
 setenv("EBVERSIONNAGFOR", "6.2.6223")
 setenv("EBDEVELNAGFOR", pathJoin(root, "easybuild/NAGfor-6.2.6223-easybuild-devel"))
 
-setenv("NAG_KUSARI_FILE", "/software.el7/software/NAGfor/6.2.6223/nag.key")
+setenv("NAG_KUSARI_FILE", "license01.ubelix.unibe.ch:7733")
 prepend_path("PATH", root)
 -- Built with EasyBuild version 3.9.3
